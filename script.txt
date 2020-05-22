@@ -1,0 +1,90 @@
+var validform=false;
+try
+{
+	var click_submit = document.getElementById("submit");
+	click_submit.addEventListener("click", formValidation);
+	function formValidation()
+		{
+			var name = document.getElementById("name").value;
+			var email = document.getElementById("email").value;
+			var psw = new Date(document.getElementById("password").value);
+			var psw-repeat = document.getElementsByClassName("repeat_password").value;
+			
+			if((name.length != 0  && email.length != 0) 
+			{
+				if(validName(name))
+				{
+					if(validEmail(email))
+					{
+						validform=true;
+					}
+					else
+					{
+						alert("Invalid Email ID!")
+					}
+				else
+				{
+					alert("Enter valid Name!")
+				}
+			}
+			else
+			{
+				("Please fill all the Values.")
+			}
+			
+			if(validform)
+			{
+				var name = document.getElementById("name").value;
+				alert("Welcome "+name);
+				var line1 = "Name :" + name + "<br>";
+				var line2 = "Email :" + email + "<br>";
+				var line3 = "Mobile No." + mobno + "<br>";
+				document.getElementById("output").innerHTML = line1 + line2 + line3;
+				document.write(document.getElementById("output").innerHTML);
+			}
+
+			function validName(name)
+			{
+				var letters = /^[A-Za-z ]+$/;
+				if((name.match(letters).length > 0 )|| !(name.match(letters)==null))
+					{
+						return true;
+					}
+				else
+					{
+						return false;
+					}
+			}
+
+			function validEmail(email)
+			{
+ 				if (/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(myForm.email.value))
+  					{
+    					return (true)
+  					}
+    				alert("You have entered an invalid email address!")
+    				return (false)
+			}	
+			
+			function validMobno(mobno)
+			{
+  				var phoneno = /^\d{10}$/;
+  				if((mobno.value.match(phoneno))
+        			{
+      					return true;
+        			}
+      			else
+        			{
+        				alert("Number Invalid!");
+        				return false;
+        			}
+			}
+		}
+
+	}
+	
+	catch(err)
+	{
+		console.log(err.message);
+    }
+}    	
